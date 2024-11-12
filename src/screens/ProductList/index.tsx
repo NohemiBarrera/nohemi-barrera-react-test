@@ -1,22 +1,15 @@
 import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { Loader } from 'lucide-react'
-import { RootState } from '../../store'
-import {
-  fetchProducts,
-  setCurrentPage,
-  setSearchQuery,
-  setSortDirection,
-  setSortField,
-} from '../../store/slices/productsSlice'
+import { Loader, Search } from 'lucide-react'
+import { AppDispatch, RootState } from '../../store'
+import { fetchProducts, setCurrentPage, setSearchQuery, setSortDirection, setSortField } from '../../store/slices/productsSlice'
 import { Product } from '../../types'
 import { Pagination } from '../../components/Pagination'
 import { ProductTable } from './components/ProductTable'
-import { SearchBar } from './components/SearchBar'
 import styles from './ProductList.module.scss'
 
 const ProductList = () => {
-  const dispatch = useDispatch()
+  const dispatch = useDispatch<AppDispatch>()
   const {
     items,
     loading,
@@ -32,8 +25,8 @@ const ProductList = () => {
     dispatch(fetchProducts())
   }, [dispatch])
 
-  const handleSearch = (value: string) => {
-    dispatch(setSearchQuery(value))
+  const handleSearch = (e: React.ChangeEvent<HTMLInputElement>) => {
+    dispatch(setSearchQuery(e.target.value))
   }
 
   const handleSort = (field: keyof Product) => {
@@ -81,7 +74,15 @@ const ProductList = () => {
     <div className={styles.container}>
       <div className={styles.header}>
         <h1>Products</h1>
-        <SearchBar value={searchQuery} onChange={handleSearch} />
+        <div className={styles.searchBar}>
+          <Search className={styles.searchIcon} />
+          <input
+            type="text"
+            placeholder="Search products..."
+            value={searchQuery}
+            onChange={handleSearch}
+          />
+        </div>
       </div>
 
       <ProductTable
