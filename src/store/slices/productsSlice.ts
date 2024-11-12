@@ -35,7 +35,7 @@ const initialState: ProductsState = {
   loading: false,
   error: null,
   currentPage: 1,
-  itemsPerPage: 10,
+  itemsPerPage: 3,
   searchQuery: '',
   sortField: null,
   sortDirection: 'asc',
