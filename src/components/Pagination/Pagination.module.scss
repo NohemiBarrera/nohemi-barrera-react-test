@@ -1,0 +1,49 @@
+@import '../../styles/variables';
+
+.pagination {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: $spacing-xs;
+  margin-top: $spacing-lg;
+}
+
+.page,
+.arrow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 36px;
+  height: 36px;
+  padding: 0 $spacing-sm;
+  border: 1px solid lighten($secondary-color, 30%);
+  border-radius: $radius-md;
+  background: white;
+  color: $text-primary;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all $transition-normal;
+
+  &:hover:not(:disabled) {
+    background: #f8fafc;
+    border-color: $secondary-color;
+  }
+
+  &:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+
+  &.active {
+    background: $primary-color;
+    border-color: $primary-color;
+    color: white;
+  }
+}
+
+.arrow {
+  &:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+}

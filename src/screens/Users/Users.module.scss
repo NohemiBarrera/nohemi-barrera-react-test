@@ -1,0 +1,136 @@
+@import '../../styles/variables';
+
+.container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: $spacing-lg;
+
+  h1 {
+    font-size: 2rem;
+    font-weight: 600;
+    color: $text-primary;
+    margin-bottom: $spacing-xl;
+  }
+}
+
+.card {
+  background: white;
+  border-radius: $radius-lg;
+  padding: $spacing-xl;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: $spacing-lg;
+
+  h2 {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: $text-primary;
+    margin: 0;
+  }
+}
+
+.editButton {
+  padding: $spacing-sm $spacing-lg;
+  background: none;
+  border: 1px solid lighten($secondary-color, 30%);
+  border-radius: $radius-md;
+  color: $text-secondary;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all $transition-normal;
+
+  &:hover {
+    background: #f8fafc;
+    border-color: $secondary-color;
+  }
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-lg;
+}
+
+.formGroup {
+  label {
+    display: flex;
+    align-items: center;
+    gap: $spacing-xs;
+    color: $text-secondary;
+    font-weight: 500;
+    margin-bottom: $spacing-xs;
+
+    .icon {
+      width: 18px;
+      height: 18px;
+    }
+  }
+
+  input {
+    width: 100%;
+    padding: $spacing-md;
+    border: 1px solid lighten($secondary-color, 30%);
+    border-radius: $radius-md;
+    font-size: 1rem;
+
+    &:focus {
+      outline: none;
+      border-color: $primary-color;
+      box-shadow: 0 0 0 2px rgba($primary-color, 0.1);
+    }
+  }
+}
+
+.error {
+  color: #ef4444;
+  font-size: 0.875rem;
+  margin-top: $spacing-xs;
+}
+
+.saveButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: $spacing-xs;
+  padding: $spacing-md;
+  background-color: $primary-color;
+  color: white;
+  border: none;
+  border-radius: $radius-md;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color $transition-normal;
+
+  &:hover {
+    background-color: darken($primary-color, 10%);
+  }
+
+  .icon {
+    width: 20px;
+    height: 20px;
+  }
+}
+
+.info {
+  .field {
+    margin-bottom: $spacing-md;
+
+    .label {
+      display: block;
+      color: $text-secondary;
+      font-size: 0.875rem;
+      margin-bottom: $spacing-xs;
+    }
+
+    .value {
+      color: $text-primary;
+      font-size: 1rem;
+      font-weight: 500;
+    }
+  }
+}

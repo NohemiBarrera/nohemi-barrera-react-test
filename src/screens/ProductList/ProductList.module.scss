@@ -1,0 +1,162 @@
+@import '../../styles/variables';
+
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-lg;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: $spacing-lg;
+
+  h1 {
+    font-size: 2rem;
+    font-weight: 600;
+    color: $text-primary;
+  }
+}
+
+.searchBar {
+  position: relative;
+  width: 300px;
+
+  input {
+    width: 100%;
+    padding: $spacing-md $spacing-lg $spacing-md (
+      $spacing-lg * 2
+    );
+  border: 1px solid lighten($secondary-color, 30%);
+  border-radius: $radius-md;
+  font-size: 1rem;
+  transition: all $transition-normal;
+
+  &:focus {
+    outline: none;
+    border-color: $primary-color;
+    box-shadow: 0 0 0 2px rgba($primary-color, 0.1);
+  }
+}
+
+.searchIcon {
+  position: absolute;
+  left: $spacing-md;
+  top: 50%;
+  transform: translateY(-50%);
+  color: $text-secondary;
+  width: 20px;
+  height: 20px;
+}
+}
+
+// ProductTable styles
+.tableContainer {
+  background: white;
+  border-radius: $radius-lg;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  overflow: auto;
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+
+  th {
+    background: #f8fafc;
+    padding: $spacing-md;
+    text-align: left;
+    font-weight: 600;
+    color: $text-secondary;
+    cursor: pointer;
+    user-select: none;
+    white-space: nowrap;
+
+    &:hover {
+      background: #f1f5f9;
+    }
+  }
+
+  td {
+    padding: $spacing-md;
+    border-top: 1px solid #e2e8f0;
+    color: $text-primary;
+  }
+
+  tbody tr {
+    cursor: pointer;
+    transition: background-color $transition-normal;
+
+    &:hover {
+      background-color: #f8fafc;
+    }
+  }
+}
+
+.productInfo {
+  display: flex;
+  align-items: center;
+  gap: $spacing-md;
+
+  img {
+    width: 40px;
+    height: 40px;
+    object-fit: contain;
+    border-radius: $radius-sm;
+  }
+
+  span {
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+}
+
+// ProductRating styles
+.rating {
+  display: flex;
+  align-items: center;
+  gap: $spacing-xs;
+
+  .stars {
+    color: #f59e0b;
+    letter-spacing: -1px;
+  }
+
+  .count {
+    color: $text-secondary;
+    font-size: 0.875rem;
+  }
+}
+
+.loading {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: $spacing-md;
+  min-height: 400px;
+  color: $text-secondary;
+
+  .spinner {
+    animation: spin 1s linear infinite;
+  }
+}
+
+.error {
+  text-align: center;
+  color: #ef4444;
+  padding: $spacing-xl;
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}

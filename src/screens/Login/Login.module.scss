@@ -1,0 +1,132 @@
+@import '../../styles/variables';
+
+.container {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, $primary-color, darken($primary-color, 20%));
+  padding: $spacing-md;
+}
+
+.formWrapper {
+  background: white;
+  padding: $spacing-xl;
+  border-radius: $radius-lg;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 480px;
+}
+
+.title {
+  font-size: 2rem;
+  font-weight: 700;
+  color: $text-primary;
+  margin-bottom: $spacing-xl;
+  text-align: center;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-lg;
+}
+
+.inputGroup {
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-xs;
+}
+
+.label {
+  display: flex;
+  align-items: center;
+  gap: $spacing-xs;
+  color: $text-secondary;
+  font-weight: 500;
+
+  .icon {
+    width: 18px;
+    height: 18px;
+  }
+}
+
+.input {
+  padding: $spacing-md;
+  border: 1px solid lighten($secondary-color, 30%);
+  border-radius: $radius-md;
+  font-size: 1rem;
+  transition: border-color $transition-normal;
+
+  &:focus {
+    outline: none;
+    border-color: $primary-color;
+    box-shadow: 0 0 0 2px rgba($primary-color, 0.1);
+  }
+
+  &::placeholder {
+    color: lighten($text-secondary, 20%);
+  }
+}
+
+.error {
+  color: #ef4444;
+  font-size: 0.875rem;
+}
+
+.button {
+  background-color: $primary-color;
+  color: white;
+  padding: $spacing-md;
+  border: none;
+  border-radius: $radius-md;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color $transition-normal;
+
+  &:hover {
+    background-color: darken($primary-color, 10%);
+  }
+}
+
+.requirements {
+  margin-top: $spacing-xl;
+  padding-top: $spacing-lg;
+  border-top: 1px solid lighten($secondary-color, 30%);
+
+  h3 {
+    color: $text-secondary;
+    font-size: 0.875rem;
+    margin-bottom: $spacing-sm;
+  }
+
+  ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: $spacing-xs;
+
+    li {
+      color: $text-secondary;
+      font-size: 0.875rem;
+      display: flex;
+      align-items: center;
+      gap: $spacing-xs;
+
+      &::before {
+        content: '•';
+        color: #ef4444;
+      }
+
+      &.valid {
+        color: #22c55e;
+
+        &::before {
+          color: #22c55e;
+        }
+      }
+    }
+  }
+}
