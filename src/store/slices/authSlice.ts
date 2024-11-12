@@ -15,18 +15,18 @@ const decryptData = (encryptedData: string): User | null => {
   } catch (error) {
     return null
   }
-};
+}
 
 // Get initial state from localStorage
 const getInitialState = (): AuthState => {
   const encryptedUser = localStorage.getItem('user')
   const lastActivity = localStorage.getItem('lastActivity')
-  
+
   if (encryptedUser && lastActivity) {
     const user = decryptData(encryptedUser)
     const lastActivityTime = parseInt(lastActivity, 10)
     const currentTime = Date.now()
-    const inactivityTimeout = 300000; // 5 minutes
+    const inactivityTimeout = 300000 // 5 minutes
 
     if (user && currentTime - lastActivityTime < inactivityTimeout) {
       return {
@@ -40,13 +40,13 @@ const getInitialState = (): AuthState => {
   // Clear localStorage if session is invalid or expired
   localStorage.removeItem('user')
   localStorage.removeItem('lastActivity')
-  
+
   return {
     user: null,
     isAuthenticated: false,
     lastActivity: Date.now(),
-  };
-};
+  }
+}
 
 const initialState: AuthState = getInitialState()
 
@@ -55,23 +55,25 @@ const authSlice = createSlice({
   initialState,
   reducers: {
     login: (state, action: PayloadAction<User>) => {
-      const encryptedUser = encryptData(action.payload)
       const currentTime = Date.now()
-      
-      localStorage.setItem('user', encryptedUser);
+
+      const encryptedUser = encryptData(action.payload)
+      localStorage.setItem('user', encryptedUser)
       localStorage.setItem('lastActivity', currentTime.toString())
-      
+
       state.user = action.payload
       state.isAuthenticated = true
       state.lastActivity = currentTime
     },
     logout: (state) => {
-      // localStorage.removeItem('user');
-      // localStorage.removeItem('lastActivity');
-      localStorage.clear()
-      
+      // Clear auth-related localStorage items
+      localStorage.removeItem('user')
+      localStorage.removeItem('lastActivity')
+
+      // Reset state
       state.user = null
       state.isAuthenticated = false
+      state.lastActivity = Date.now()
     },
     updateLastActivity: (state) => {
       const currentTime = Date.now()
@@ -84,7 +86,7 @@ const authSlice = createSlice({
       state.user = action.payload
     },
   },
-});
+})
 
 export const { login, logout, updateLastActivity, updateUser } = authSlice.actions
 export default authSlice.reducer
