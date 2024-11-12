@@ -35,7 +35,7 @@ const initialState: ProductsState = {
   loading: false,
   error: null,
   currentPage: 1,
-  itemsPerPage: 3,
+  itemsPerPage: 10,
   searchQuery: '',
   sortField: null,
   sortDirection: 'asc',
@@ -111,6 +111,7 @@ const productsSlice = createSlice({
         state.currentPage = Math.max(1, totalPages)
       }
     },
+    resetProducts: () => initialState,
   },
   extraReducers: (builder) => {
     builder
@@ -139,5 +140,6 @@ export const {
   addProduct,
   updateProduct,
   deleteProduct,
+  resetProducts,
 } = productsSlice.actions
 export default productsSlice.reducer

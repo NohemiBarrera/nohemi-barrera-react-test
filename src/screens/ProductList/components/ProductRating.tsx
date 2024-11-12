@@ -2,13 +2,13 @@ import React from 'react'
 import styles from '../ProductList.module.scss'
 
 interface ProductRatingProps {
-  rating: {
+  rating?: {
     rate: number
     count: number
   }
 }
 
-export const ProductRating: React.FC<ProductRatingProps> = ({ rating }) => (
+export const ProductRating: React.FC<ProductRatingProps> = ({ rating = { rate: 0, count: 0 } }) => (
   <div className={styles.rating}>
     <span className={styles.stars}>
       {'★'.repeat(Math.round(rating.rate))}

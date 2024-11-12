@@ -15,7 +15,7 @@ const ProductDetail = () => {
   const [isEditing, setIsEditing] = useState(false)
 
   const product = useSelector((state: RootState) =>
-    state.products.items.find(p => p.id === Number(id))
+    state.products.items.find((p: { id: number }) => p.id === Number(id))
   )
 
   useEffect(() => {

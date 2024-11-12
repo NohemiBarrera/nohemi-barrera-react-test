@@ -50,7 +50,13 @@ export const ProductTable: React.FC<ProductTableProps> = ({
             >
               <td>
                 <div className={styles.productInfo}>
-                  <img src={product.image} alt={product.title} />
+                  <img
+                    src={product.image}
+                    alt={product.title}
+                    onError={(e) => {
+                      e.currentTarget.src = 'https://via.placeholder.com/150'
+                    }}
+                  />
                   <span>{product.title}</span>
                 </div>
               </td>
